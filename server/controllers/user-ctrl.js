@@ -5,6 +5,20 @@ const validateRegister = require('../validation/register');
 const validateLogin = require('../validation/login');
 const key = process.env.SECRET_KEY;
 
+const getUser = async (req, res) => {
+    await userModel.find({})
+        .then((user, error) => {
+            if (error) {
+                return res.status(400).json({ success: false, error })
+            }
+            if (user.length == 0) {
+                return res.json({ success: false, message: "No user available" })
+            }
+            res.status(200).json({ success: true, user })
+        })
+};
+
+
 const register = async (req, res) => {
     const { isValid, errors } = validateRegister(req.body.user);
     if (!isValid) return res.status(400).json(errors)
@@ -55,5 +69,6 @@ const login = async (req, res) => {
 }
 module.exports = {
     register,
-    login
+    login,
+    getUser
 }

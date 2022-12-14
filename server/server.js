@@ -5,7 +5,15 @@ const cors = require('cors');
 require('./DB/db')
 const path = require('path');
 
-const usersRouter = require('../server/routes/users-router')
+const usersRouter = require('../server/routes/users-router');
+const productRouter = require('../server/routes/product-router');
+const categoryRouter = require('../server/routes/category-router');
+const subCategoryRouter = require('../server/routes/subCategory-router');
+const orderRouter = require('../server/routes/order-router');
+
+
+
+
 const passport = require('passport');
 require('./config/passport')(passport);
 const app = express();
@@ -18,6 +26,15 @@ app.use(cors())
 
 
 app.use('/api/users', usersRouter);
+app.use('/api/product', productRouter);
+app.use('/api/category', categoryRouter);
+app.use('/api/SubCategory', subCategoryRouter);
+app.use('/api/order', orderRouter);
+
+
+
+
+
 
 app.get('/', (req, res) => {
     res.send({ massage: "success" })
