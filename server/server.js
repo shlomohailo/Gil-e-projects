@@ -9,7 +9,7 @@ const usersRouter = require('../server/routes/users-router')
 const passport = require('passport');
 require('./config/passport')(passport);
 const app = express();
-const port = 8000;
+const port = 8080;
 
 app.use(passport.initialize())
 app.use(express.json({ extended: true }));
