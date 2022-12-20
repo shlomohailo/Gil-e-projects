@@ -1,7 +1,7 @@
 const categoryModel = require('../models/model-category');
 
 const getCategory = async (req, res) => {
-    await categoryModel.find({})
+    await categoryModel.find().populate("subCategory")
         .then((category, error) => {
             if (error) {
                 return res.status(400).json({ success: false, error })

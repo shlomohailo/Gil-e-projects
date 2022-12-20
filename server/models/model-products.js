@@ -9,19 +9,17 @@ const ProductSchema = new Schema({
         type: String,
         required: true
     },
-    img: {
-        type: String,
+       img: {
+      type: String,
     },
-    category: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Category'
+    category: [{
+            type:Schema.Types.ObjectId,
+            ref:'Category'
         }],
     color: { type: String },
-    hight: { type: String },
+    height: { type: String },
     length: { type: String },
     depth: { type: String },
-    hight: { type: String },
 
 },
     {

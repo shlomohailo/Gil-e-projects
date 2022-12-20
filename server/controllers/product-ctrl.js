@@ -1,7 +1,12 @@
 const productModel = require('../models/model-products');
 
+
+
 const getProduct = async (req, res) => {
-    await productModel.find({})
+    await productModel.find().populate({
+        path: 'category',
+        populate: { path: 'subCategory'}
+    }).exec()
         .then((product, error) => {
             if (error) {
                 return res.status(400).json({ success: false, error })
