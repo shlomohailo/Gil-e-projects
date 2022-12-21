@@ -20,17 +20,17 @@ const getUser = async (req, res) => {
 
 
 const register = async (req, res) => {
-    const { isValid, errors } = validateRegister(req.body.user);
+    const { isValid, errors } = validateRegister(req.body);
     if (!isValid) return res.status(400).json(errors)
-    userModel.findOne({ email: req.body.user.email }, (err, user) => {
+    userModel.findOne({ email: req.body.email }, (err, user) => {
         if (err) return res.status(400).json(err)
-        if (user) return res.json({ massage: "email already taken" })
+        if (user) return res.status(400).json({ email: "email already taken" })
         bcrypt.genSalt()
             .then((salt) => {
-                bcrypt.hash(req.body.user.password, salt)
+                bcrypt.hash(req.body.password, salt)
                     .then(async (hashPassword) => {
-                        req.body.user.password = hashPassword;
-                        await userModel.insertMany(req.body.user)
+                        req.body.password = hashPassword;
+                        await userModel.insertMany(req.body)
                             .then(() => res.json({ massage: "success" }))
                             .catch(err => res.json(err))
                     })
@@ -40,10 +40,10 @@ const register = async (req, res) => {
     })
 }
 const login = async (req, res) => {
-    const { isValid, errors } = validateLogin(req.body.user)
+    const { isValid, errors } = validateLogin(req.body)
     if (!isValid) return res.status(400).json(errors)
-    const email = req.body.user.email;
-    const password = req.body.user.password;
+    const email = req.body.email;
+    const password = req.body.password;
     userModel.findOne({ email })
         .then(user => {
             if (!user) {

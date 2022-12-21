@@ -16,6 +16,10 @@ const ProductSchema = new Schema({
             type:Schema.Types.ObjectId,
             ref:'Category'
         }],
+        subBCategory: [{
+            type:Schema.Types.ObjectId,
+            ref:'subCategory'
+        }],
     color: { type: String },
     height: { type: String },
     length: { type: String },

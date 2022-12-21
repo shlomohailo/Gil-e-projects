@@ -5,7 +5,13 @@ import Image from "react-bootstrap/Image";
 import "./Header.css";
 function Header() {
   return (
-    <Navbar className="navbar" collapseOnSelect expand="lg" variant="dark">
+    <Navbar
+      bg="dark"
+      className="navbar"
+      collapseOnSelect
+      expand="lg"
+      variant="dark"
+    >
       <Navbar.Brand href="/">
         <Image
           class="rounded-circle"
@@ -17,17 +23,27 @@ function Header() {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          {/* <Nav.Link href="#features">Features</Nav.Link> */}
-          {/* <Nav.Link href="#pricing">Pricing</Nav.Link> */}
           <NavDropdown title="Tables" id="collasible-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">
-              Another action
+            <NavDropdown.Item href="/tables">teacher's desk</NavDropdown.Item>
+            <NavDropdown.Item href="/tables">student's desk</NavDropdown.Item>
+            <NavDropdown.Item href="/tables">Executive desk</NavDropdown.Item>
+          </NavDropdown>
+
+          <NavDropdown title="Chirs" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="/chirs">teacher's chirs</NavDropdown.Item>
+            <NavDropdown.Item href="/chirs">student's chirs</NavDropdown.Item>
+            <NavDropdown.Item href="/chirs">Executive's chirs</NavDropdown.Item>
+          </NavDropdown>
+
+          <NavDropdown title="Clothes" id="collasible-nav-dropdown">
+            <NavDropdown.Item href="/closets">
+              teacher'sClothes
             </NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">
-              Separated link
+            <NavDropdown.Item href="/closets">
+              teacher's Clothes
+            </NavDropdown.Item>
+            <NavDropdown.Item href="/closets">
+              Executive Clothes
             </NavDropdown.Item>
           </NavDropdown>
         </Nav>
